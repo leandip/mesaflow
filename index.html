@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MesaFlow | Sistema POS en Tiempo Real para Bares y Restaurantes</title>
   <meta name="description" content="Probá en vivo cómo funciona MesaFlow: salón, comandas a cocina (KDS) en un toque, control de stock y caja blindada desde tu celular." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E1628'/%3E%3Cpath d='M22 72V36c0-8 11-11 16-4l12 16 12-16c5-7 16-4 16 4v20' fill='none' stroke='%23F47616' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='50' y1='48' x2='50' y2='72' stroke='%23F47616' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='78' cy='70' r='7.5' fill='%2300BA7C'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #080D17;
-      --bg-elevated: #0F172A;
-      --card: #162033;
-      --card-hover: #1E293B;
+      --bg: #0E1628;
+      --bg-elevated: #131E36;
+      --card: #182542;
+      --card-hover: #1E2E52;
       --border: rgba(148, 163, 184, 0.14);
-      --border-strong: rgba(249, 115, 22, 0.45);
-      --primary: #F97316;
-      --primary-glow: rgba(249, 115, 22, 0.35);
+      --border-strong: rgba(244, 118, 22, 0.45);
+      --primary: #F47616;
+      --primary-hover: #E06509;
+      --primary-glow: rgba(244, 118, 22, 0.35);
       --text: #F8FAFC;
       --muted: #94A3B8;
-      --green: #10B981;
-      --green-bg: rgba(16, 185, 129, 0.14);
+      --green: #00BA7C;
+      --green-bg: rgba(0, 186, 124, 0.14);
       --blue: #38BDF8;
       --blue-bg: rgba(56, 189, 248, 0.14);
       --amber: #F59E0B;
@@ -60,7 +62,7 @@
       width: 520px;
       height: 520px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(249, 115, 22, 0.16) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(244, 118, 22, 0.15) 0%, transparent 70%);
       top: -140px;
       right: -100px;
       pointer-events: none;
@@ -71,7 +73,7 @@
     .container {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 0 22px;
+      padding: 0 20px;
     }
 
     /* NAVBAR */
@@ -79,38 +81,40 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 13, 23, 0.82);
+      background: rgba(14, 22, 40, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav {
-      height: 72px;
+      height: 68px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 12px;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.45rem;
+      font-size: 1.38rem;
       font-weight: 800;
       text-decoration: none;
       color: var(--text);
       letter-spacing: -0.6px;
+      flex-shrink: 0;
     }
 
-    .logo-badge {
-      width: 36px;
-      height: 36px;
+    .logo-icon {
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
-      background: linear-gradient(135deg, #F97316, #EA580C);
+      background: #0B1221;
+      border: 1px solid rgba(244, 118, 22, 0.35);
       display: grid;
       place-items: center;
-      font-size: 1.15rem;
-      box-shadow: 0 6px 20px var(--primary-glow);
+      flex-shrink: 0;
     }
 
     .logo span { color: var(--primary); }
@@ -118,7 +122,7 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
     }
 
     .nav-menu a.nav-link {
@@ -136,13 +140,14 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 22px;
+      padding: 12px 20px;
       border-radius: 12px;
       font-weight: 700;
       font-size: 0.92rem;
       text-decoration: none;
       cursor: pointer;
       border: none;
+      white-space: nowrap;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -155,7 +160,7 @@
     }
 
     .btn-primary:hover {
-      background: #EA580C;
+      background: var(--primary-hover);
       transform: translateY(-2px);
     }
 
@@ -170,9 +175,11 @@
       background: var(--card-hover);
     }
 
+    .nav-cta-mobile { display: none; }
+
     /* HERO + DEMO INTERACTIVA */
     .hero {
-      padding: 56px 0 64px;
+      padding: 46px 0 64px;
     }
 
     .hero-grid {
@@ -186,48 +193,52 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: var(--green-bg);
+      border: 1px solid rgba(0, 186, 124, 0.35);
       color: #6EE7B7;
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 700;
       margin-bottom: 18px;
+      text-decoration: none;
     }
+
+    .tag-mobile { display: none; }
 
     .pulse-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      box-shadow: 0 0 0 0 rgba(0, 186, 124, 0.7);
       animation: pulse 1.8s infinite;
+      flex-shrink: 0;
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(0, 186, 124, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(0, 186, 124, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 186, 124, 0); }
     }
 
     .hero h1 {
-      font-size: clamp(2.3rem, 4.4vw, 3.55rem);
-      line-height: 1.06;
-      letter-spacing: -1.4px;
+      font-size: clamp(2.15rem, 4.4vw, 3.55rem);
+      line-height: 1.08;
+      letter-spacing: -1.2px;
       margin-bottom: 18px;
     }
 
     .hero h1 span {
-      background: linear-gradient(90deg, #F97316, #FBBF24);
+      background: linear-gradient(90deg, #F47616, #FBBF24);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-sub {
       color: var(--muted);
-      font-size: 1.06rem;
-      margin-bottom: 28px;
+      font-size: 1.04rem;
+      margin-bottom: 26px;
       max-width: 500px;
     }
 
@@ -240,7 +251,7 @@
 
     .hero-metrics {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       padding-top: 20px;
       border-top: 1px solid var(--border);
     }
@@ -248,22 +259,23 @@
     .metric strong {
       display: block;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       color: var(--text);
     }
 
     .metric span {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
     /* SIMULADOR INTERACTIVO DE SALON + COCINA + CAJA */
     .sim-shell {
       background: var(--bg-elevated);
-      border: 1px solid rgba(249, 115, 22, 0.35);
+      border: 1px solid rgba(244, 118, 22, 0.38);
       border-radius: 24px;
       padding: 18px;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), 0 0 40px rgba(249, 115, 22, 0.08);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(244, 118, 22, 0.08);
+      scroll-margin-top: 84px;
     }
 
     .sim-header {
@@ -281,19 +293,18 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       font-weight: 800;
     }
 
     .sim-cash-pill {
       background: var(--green-bg);
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      border: 1px solid rgba(0, 186, 124, 0.35);
       color: #6EE7B7;
       padding: 5px 12px;
       border-radius: 10px;
       font-size: 0.82rem;
       font-weight: 800;
-      transition: transform 0.2s;
     }
 
     .sim-tabs {
@@ -310,16 +321,16 @@
       background: transparent;
       border: none;
       color: var(--muted);
-      padding: 9px 8px;
+      padding: 9px 6px;
       border-radius: 9px;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .sim-tab.active {
@@ -404,7 +415,7 @@
       color: var(--text);
       padding: 7px 10px;
       border-radius: 9px;
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.15s;
@@ -412,7 +423,7 @@
 
     .dish-btn:hover {
       border-color: var(--primary);
-      background: rgba(249, 115, 22, 0.12);
+      background: rgba(244, 118, 22, 0.14);
     }
 
     .sim-order-list {
@@ -443,7 +454,7 @@
       padding: 10px;
       border-radius: 10px;
       font-weight: 800;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
       border: none;
     }
@@ -464,7 +475,7 @@
     .ticker-wrap {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(19, 30, 54, 0.8);
       padding: 14px 0;
       overflow: hidden;
       white-space: nowrap;
@@ -493,12 +504,12 @@
     }
 
     /* SECCIONES GENERALES */
-    section { padding: 84px 0; }
+    section { padding: 80px 0; }
 
     .sec-head {
       text-align: center;
       max-width: 660px;
-      margin: 0 auto 52px;
+      margin: 0 auto 50px;
     }
 
     .sec-kicker {
@@ -512,7 +523,7 @@
     }
 
     .sec-head h2 {
-      font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+      font-size: clamp(1.85rem, 3.6vw, 2.6rem);
       letter-spacing: -0.8px;
       margin-bottom: 12px;
     }
@@ -547,8 +558,8 @@
       width: 46px;
       height: 46px;
       border-radius: 12px;
-      background: rgba(249, 115, 22, 0.14);
-      border: 1px solid rgba(249, 115, 22, 0.3);
+      background: rgba(244, 118, 22, 0.14);
+      border: 1px solid rgba(244, 118, 22, 0.3);
       display: grid;
       place-items: center;
       font-size: 1.35rem;
@@ -556,7 +567,7 @@
     }
 
     .bento-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       margin-bottom: 8px;
     }
 
@@ -625,8 +636,8 @@
 
     .plan-card.popular {
       border-color: var(--primary);
-      background: linear-gradient(180deg, rgba(249, 115, 22, 0.09) 0%, var(--card) 42%);
-      box-shadow: 0 20px 50px rgba(249, 115, 22, 0.14);
+      background: linear-gradient(180deg, rgba(244, 118, 22, 0.1) 0%, var(--card) 42%);
+      box-shadow: 0 20px 50px rgba(244, 118, 22, 0.14);
     }
 
     .ribbon {
@@ -687,10 +698,10 @@
 
     /* CTA FINAL */
     .final-cta {
-      background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.22), transparent 55%), var(--card);
+      background: radial-gradient(circle at top right, rgba(244, 118, 22, 0.22), transparent 55%), var(--card);
       border: 1.5px solid var(--border-strong);
       border-radius: 26px;
-      padding: 52px 30px;
+      padding: 52px 26px;
       text-align: center;
     }
 
@@ -707,6 +718,23 @@
       .plans-grid { grid-template-columns: 1fr; }
       .span-7, .span-5, .span-4 { grid-column: span 12; }
       .nav-menu a.nav-link { display: none; }
+      .tag-desktop { display: none; }
+      .tag-mobile { display: inline-flex; }
+    }
+
+    @media (max-width: 540px) {
+      .logo { font-size: 1.25rem; gap: 8px; }
+      .logo-icon { width: 34px; height: 34px; }
+      .nav-cta-desktop { display: none; }
+      .nav-cta-mobile {
+        display: inline-flex;
+        padding: 9px 13px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+      }
+      .hero { padding: 32px 0 52px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-metrics { gap: 16px; }
     }
   </style>
 </head>
@@ -717,15 +745,24 @@
   <header>
     <div class="container nav">
       <a href="#" class="logo">
-        <div class="logo-badge">🍽️</div>
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 76V34c0-10 13-13 19-5l13 18 13-18c6-8 19-5 19 5v24" fill="none" stroke="#F47616" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="50" y1="47" x2="50" y2="76" stroke="#F47616" stroke-width="12" stroke-linecap="round"/>
+            <circle cx="82" cy="74" r="9" fill="#00BA7C"/>
+          </svg>
+        </div>
         Mesa<span>Flow</span>
       </a>
       <nav class="nav-menu">
         <a href="#funciones" class="nav-link">Cómo funciona</a>
         <a href="#ahorro" class="nav-link">Calculadora</a>
         <a href="#planes" class="nav-link">Planes</a>
-        <a href="https://wa.me/5493572000000?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2014%20d%C3%ADas." target="_blank" class="btn btn-primary">
+        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2014%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-desktop">
           Probar 14 días gratis
+        </a>
+        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2014%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-mobile">
+          Probar gratis
         </a>
       </nav>
     </div>
@@ -735,19 +772,23 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="live-tag">
+        <a href="#simulador" class="live-tag tag-desktop">
           <span class="pulse-dot"></span>
           Probá la app en vivo acá al lado →
-        </div>
+        </a>
+        <a href="#simulador" class="live-tag tag-mobile">
+          <span class="pulse-dot"></span>
+          Probá la app en vivo acá abajo ↓
+        </a>
         <h1>Dejá de perder comandas y <span>cerrá caja al centavo.</span></h1>
         <p class="hero-sub">
           El sistema gastronómico móvil que conecta a tus mozos, cocina y caja en tiempo real. Sin computadoras caras, sin servidores y sin pagar comisiones por venta.
         </p>
         <div class="hero-actions">
-          <a href="https://wa.me/5493572000000?text=Hola!%20Quiero%20activar%20mi%20prueba%20gratuita%20de%2014%20d%C3%ADas%20en%20MesaFlow." target="_blank" class="btn btn-primary">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20activar%20mi%20prueba%20gratuita%20de%2014%20d%C3%ADas%20en%20MesaFlow." target="_blank" class="btn btn-primary">
             Activar 14 días sin cargo
           </a>
-          <a href="#LINK_APK" class="btn btn-ghost">
+          <a href="https://expo.dev/artifacts/eas/dSX8e9VHWeSWNbfN_jTqIfGuEoBNuEOWo2xE7zsGc9c.apk" class="btn btn-ghost">
             📲 Descargar APK Android
           </a>
         </div>
@@ -768,7 +809,7 @@
       </div>
 
       <!-- SIMULADOR INTERACTIVO -->
-      <div class="sim-shell">
+      <div class="sim-shell" id="simulador">
         <div class="sim-header">
           <div class="sim-title">⚡ DEMO INTERACTIVA — TOCÁ UNA MESA</div>
           <div class="sim-cash-pill" id="simCashDisplay">💰 Caja: $50.000</div>
@@ -787,7 +828,7 @@
           <div class="sim-tables" id="simTablesGrid"></div>
           <div class="sim-panel">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <strong style="font-size:0.88rem;" id="selectedTableLabel">Mesa M1 • Tocá platos para sumar:</strong>
+              <strong style="font-size:0.86rem;" id="selectedTableLabel">Mesa M1 • Tocá platos para sumar:</strong>
               <span style="font-weight:800; color:var(--green);" id="selectedTableTotal">$0</span>
             </div>
 
@@ -839,7 +880,6 @@
       <div class="ticker-item">📦 <strong>Descuento automático de stock</strong> y botón Agotado</div>
       <div class="ticker-item">🛵 <strong>Delivery y Take Away</strong> con cálculo de envío</div>
       <div class="ticker-item">📊 <strong>Exportación a Excel / CSV</strong> lista para tu contador</div>
-      <!-- Duplicado para loop continuo -->
       <div class="ticker-item">⚡ <strong>Comandas en 1 toque</strong> sin papeles perdidos</div>
       <div class="ticker-item">💳 <strong>Efectivo, QR, Débito y Crédito</strong> separados en caja</div>
       <div class="ticker-item">🔐 <strong>PIN individual</strong> para Mozos, Cocina y Encargados</div>
@@ -898,7 +938,7 @@
       <div class="calc-box reveal">
         <div>
           <span class="sec-kicker">Calculadora de impacto</span>
-          <h2 style="font-size:1.9rem; margin-bottom:10px;">¿Cuánto perdés hoy por errores de comanda o demoras al cobrar?</h2>
+          <h2 style="font-size:1.85rem; margin-bottom:10px;">¿Cuánto perdés hoy por errores de comanda o demoras al cobrar?</h2>
           <p style="color:var(--muted); font-size:0.95rem;">Mové el deslizador según la cantidad de mesas de tu local:</p>
           <div style="margin-top:18px;">
             <div style="display:flex; justify-content:space-between; font-weight:800;">
@@ -943,7 +983,7 @@
               <li>Personalización de marca del local</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572000000?text=Hola!%20Quiero%20probar%20el%20Plan%20Esencial%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Esencial%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
             Probar 14 días gratis
           </a>
         </div>
@@ -962,7 +1002,7 @@
               <li>Alarma de comandas nuevas en Cocina</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572000000?text=Hola!%20Quiero%20probar%20el%20Plan%20Pro%20de%20MesaFlow." target="_blank" class="btn btn-primary" style="width:100%;">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Pro%20de%20MesaFlow." target="_blank" class="btn btn-primary" style="width:100%;">
             Empezar con Plan Pro
           </a>
         </div>
@@ -980,7 +1020,7 @@
               <li>Carga inicial de carta asistida sin cargo</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572000000?text=Hola!%20Quiero%20probar%20el%20Plan%20Full%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Full%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
             Probar 14 días gratis
           </a>
         </div>
@@ -992,17 +1032,17 @@
   <section>
     <div class="container">
       <div class="final-cta reveal">
-        <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom:12px;">
+        <h2 style="font-size:clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom:12px;">
           ¿Lo probamos hoy mismo en tu local?
         </h2>
         <p style="color:var(--muted); max-width:560px; margin:0 auto 28px;">
           Te creamos tu cuenta en 3 minutos, cargamos tu menú y lo dejás andando en tus propios celulares sin gastar un peso durante 14 días.
         </p>
         <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-          <a href="https://wa.me/5493572000000?text=Hola!%20Quiero%20activar%20MesaFlow%20en%20mi%20local." target="_blank" class="btn btn-primary">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20activar%20MesaFlow%20en%20mi%20local." target="_blank" class="btn btn-primary">
             💬 Escribir por WhatsApp ahora
           </a>
-          <a href="#LINK_APK" class="btn btn-ghost">
+          <a href="https://expo.dev/artifacts/eas/dSX8e9VHWeSWNbfN_jTqIfGuEoBNuEOWo2xE7zsGc9c.apk" class="btn btn-ghost">
             📲 Descargar App Android (.APK)
           </a>
         </div>
@@ -1012,12 +1052,11 @@
 
   <footer>
     <div class="container">
-      🍽️ <strong>MesaFlow</strong> • Gestión Gastronómica en Tiempo Real • Córdoba, Argentina
+      <strong>MesaFlow</strong> • Gestión Gastronómica en Tiempo Real • Córdoba, Argentina
     </div>
   </footer>
 
   <script>
-    // --- SIMULADOR INTERACTIVO DE SALÓN, COCINA Y CAJA ---
     const simState = {
       selectedId: 'M1',
       cash: 50000,
@@ -1037,16 +1076,13 @@
     };
 
     function showToast(msg) {
-      const el = document.getElementById('simToast');
-      el.textContent = msg;
+      document.getElementById('simToast').textContent = msg;
     }
 
     function renderSimulator() {
-      // Caja header
       document.getElementById('simCashDisplay').textContent =
         `💰 Caja: $${simState.cash.toLocaleString('es-AR')}`;
 
-      // Grilla de mesas
       const grid = document.getElementById('simTablesGrid');
       grid.innerHTML = simState.tables.map(t => {
         const total = t.items.reduce((s, i) => s + i.price, 0);
@@ -1065,7 +1101,6 @@
         `;
       }).join('');
 
-      // Mesa seleccionada
       const current = simState.tables.find(t => t.id === simState.selectedId);
       const currentTotal = current.items.reduce((s, i) => s + i.price, 0);
       document.getElementById('selectedTableLabel').textContent =
@@ -1085,7 +1120,6 @@
         `).join('');
       }
 
-      // Cocina KDS
       const kdsItems = [];
       simState.tables.forEach(t => {
         t.items.forEach((item, idx) => {
@@ -1111,7 +1145,6 @@
         `).join('');
       }
 
-      // Caja movimientos
       document.getElementById('simCajaList').innerHTML = simState.movements.map(m => `
         <div style="display:flex; justify-content:space-between; padding:8px 10px; background:var(--card); border-radius:9px;">
           <span>${m.concept} <small style="color:var(--muted);">(${m.method})</small></span>
@@ -1183,7 +1216,6 @@
       });
     }
 
-    // --- CALCULADORA DE AHORRO ---
     function updateCalculator() {
       const mesas = Number(document.getElementById('mesaSlider').value);
       document.getElementById('mesaCountLabel').textContent = `${mesas} mesas`;
@@ -1194,7 +1226,6 @@
         `+ ${horas} horas ahorradas al mes en cierres de caja y rotación de mesas más rápida.`;
     }
 
-    // --- ANIMACIÓN AL SCROLLEAR ---
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1205,7 +1236,6 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Inicializar
     renderSimulator();
   </script>
 </body>
