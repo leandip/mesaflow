@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MesaFlow | Sistema POS en Tiempo Real para Bares y Restaurantes</title>
-  <meta name="description" content="Probá en vivo cómo funciona MesaFlow: salón, comandas a cocina (KDS) en un toque, control de stock y caja blindada desde tu celular." />
+  <meta name="description" content="Probá en vivo cómo funciona MesaFlow: salón, comandas a cocina (KDS) en un toque, carta QR con tu logo, delivery sin comisiones y cierre de caja multi-canal." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E1628'/%3E%3Cpath d='M22 72V36c0-8 11-11 16-4l12 16 12-16c5-7 16-4 16 4v20' fill='none' stroke='%23F47616' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='50' y1='48' x2='50' y2='72' stroke='%23F47616' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='78' cy='70' r='7.5' fill='%2300BA7C'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,7 +45,6 @@
       font-family: 'Space Grotesk', sans-serif;
     }
 
-    /* FONDO CON GRILLA SUTIL Y LUZ AMBIENTAL */
     .bg-grid {
       position: fixed;
       inset: 0;
@@ -76,7 +75,6 @@
       padding: 0 20px;
     }
 
-    /* NAVBAR */
     header {
       position: sticky;
       top: 0;
@@ -177,7 +175,6 @@
 
     .nav-cta-mobile { display: none; }
 
-    /* HERO + DEMO INTERACTIVA */
     .hero {
       padding: 46px 0 64px;
     }
@@ -239,7 +236,7 @@
       color: var(--muted);
       font-size: 1.04rem;
       margin-bottom: 26px;
-      max-width: 500px;
+      max-width: 510px;
     }
 
     .hero-actions {
@@ -268,7 +265,6 @@
       color: var(--muted);
     }
 
-    /* SIMULADOR INTERACTIVO DE SALON + COCINA + CAJA */
     .sim-shell {
       background: var(--bg-elevated);
       border: 1px solid rgba(244, 118, 22, 0.38);
@@ -471,7 +467,6 @@
       min-height: 18px;
     }
 
-    /* TICKER CINÉTICO */
     .ticker-wrap {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -484,7 +479,7 @@
     .ticker-track {
       display: inline-flex;
       gap: 44px;
-      animation: marquee 26s linear infinite;
+      animation: marquee 28s linear infinite;
     }
 
     .ticker-item {
@@ -503,13 +498,12 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* SECCIONES GENERALES */
     section { padding: 80px 0; }
 
     .sec-head {
       text-align: center;
-      max-width: 660px;
-      margin: 0 auto 50px;
+      max-width: 680px;
+      margin: 0 auto 48px;
     }
 
     .sec-kicker {
@@ -530,7 +524,6 @@
 
     .sec-head p { color: var(--muted); font-size: 1.02rem; }
 
-    /* BENTO GRID DE FUNCIONES */
     .bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -576,7 +569,6 @@
       font-size: 0.94rem;
     }
 
-    /* CALCULADORA INTERACTIVA DE IMPACTO */
     .calc-box {
       background: linear-gradient(145deg, var(--card) 0%, var(--bg-elevated) 100%);
       border: 1px solid var(--border);
@@ -613,7 +605,32 @@
       margin: 6px 0;
     }
 
-    /* PLANES */
+    .setup-banner {
+      background: linear-gradient(90deg, rgba(0, 186, 124, 0.14), rgba(56, 189, 248, 0.12));
+      border: 1px solid rgba(0, 186, 124, 0.35);
+      border-radius: 18px;
+      padding: 18px 24px;
+      margin-bottom: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .setup-badge {
+      background: var(--green);
+      color: #052E16;
+      font-weight: 800;
+      font-size: 0.74rem;
+      padding: 4px 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
     .plans-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -640,6 +657,11 @@
       box-shadow: 0 20px 50px rgba(244, 118, 22, 0.14);
     }
 
+    .plan-card.full-tier {
+      border-color: rgba(56, 189, 248, 0.45);
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, var(--card) 42%);
+    }
+
     .ribbon {
       position: absolute;
       top: -13px;
@@ -652,6 +674,22 @@
       border-radius: 999px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+    }
+
+    .ribbon-blue {
+      background: var(--blue);
+      color: #082F49;
+    }
+
+    .plan-limit {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-bg);
+      padding: 4px 10px;
+      border-radius: 8px;
     }
 
     .price-val {
@@ -667,13 +705,20 @@
       color: var(--muted);
     }
 
+    .setup-note {
+      font-size: 0.78rem;
+      color: #6EE7B7;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
     .plan-features {
       list-style: none;
-      margin: 22px 0 28px;
+      margin: 20px 0 26px;
       display: flex;
       flex-direction: column;
-      gap: 11px;
-      font-size: 0.92rem;
+      gap: 10px;
+      font-size: 0.9rem;
       color: #CBD5E1;
     }
 
@@ -684,7 +729,6 @@
       margin-right: 9px;
     }
 
-    /* REVEAL ANIMATION */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -696,7 +740,6 @@
       transform: translateY(0);
     }
 
-    /* CTA FINAL */
     .final-cta {
       background: radial-gradient(circle at top right, rgba(244, 118, 22, 0.22), transparent 55%), var(--card);
       border: 1.5px solid var(--border-strong);
@@ -758,10 +801,10 @@
         <a href="#funciones" class="nav-link">Cómo funciona</a>
         <a href="#ahorro" class="nav-link">Calculadora</a>
         <a href="#planes" class="nav-link">Planes</a>
-        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2014%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-desktop">
-          Probar 14 días gratis
+        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2015%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-desktop">
+          Probar 15 días gratis
         </a>
-        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2014%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-mobile">
+        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2015%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-mobile">
           Probar gratis
         </a>
       </nav>
@@ -782,14 +825,14 @@
         </a>
         <h1>Dejá de perder comandas y <span>cerrá caja al centavo.</span></h1>
         <p class="hero-sub">
-          El sistema gastronómico móvil que conecta a tus mozos, cocina y caja en tiempo real. Sin computadoras caras, sin servidores y sin pagar comisiones por venta.
+          El sistema gastronómico multiplataforma que conecta a tus mozos, cocina, carta QR y delivery propio en tiempo real. Funciona en PC Windows, Android y Web sin pagar comisiones por venta.
         </p>
         <div class="hero-actions">
-          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20activar%20mi%20prueba%20gratuita%20de%2014%20d%C3%ADas%20en%20MesaFlow." target="_blank" class="btn btn-primary">
-            Activar 14 días sin cargo
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20activar%20mi%20prueba%20gratuita%20de%2015%20d%C3%ADas%20en%20MesaFlow." target="_blank" class="btn btn-primary">
+            Activar 15 días sin cargo
           </a>
-          <a href="https://expo.dev/artifacts/eas/dSX8e9VHWeSWNbfN_jTqIfGuEoBNuEOWo2xE7zsGc9c.apk" class="btn btn-ghost">
-            📲 Descargar APK Android
+          <a href="#planes" class="btn btn-ghost">
+            Ver planes desde $29.000
           </a>
         </div>
         <div class="hero-metrics">
@@ -798,12 +841,12 @@
             <span>De la mesa a cocina</span>
           </div>
           <div class="metric">
-            <strong>100%</strong>
-            <span>Funciona en celular/tablet</span>
+            <strong>0%</strong>
+            <span>Comisión por Delivery</span>
           </div>
           <div class="metric">
-            <strong>$0</strong>
-            <span>Costo de instalación</span>
+            <strong>Multi-equipo</strong>
+            <span>Windows, Android y Web</span>
           </div>
         </div>
       </div>
@@ -875,17 +918,17 @@
   <div class="ticker-wrap">
     <div class="ticker-track">
       <div class="ticker-item">⚡ <strong>Comandas en 1 toque</strong> sin papeles perdidos</div>
-      <div class="ticker-item">💳 <strong>Efectivo, QR, Débito y Crédito</strong> separados en caja</div>
-      <div class="ticker-item">🔐 <strong>PIN individual</strong> para Mozos, Cocina y Encargados</div>
-      <div class="ticker-item">📦 <strong>Descuento automático de stock</strong> y botón Agotado</div>
-      <div class="ticker-item">🛵 <strong>Delivery y Take Away</strong> con cálculo de envío</div>
-      <div class="ticker-item">📊 <strong>Exportación a Excel / CSV</strong> lista para tu contador</div>
+      <div class="ticker-item">🛵 <strong>Delivery y Take Away propio</strong> sin pagar 25% de comisión</div>
+      <div class="ticker-item">💳 <strong>Cierre Z Multi-Canal:</strong> Efectivo, Transferencia/QR y Lote Tarjetas</div>
+      <div class="ticker-item">🚨 <strong>Auditoría anti-fraude</strong> de ítems anulados y arqueo ciego</div>
+      <div class="ticker-item">📈 <strong>Cálculo de costos y ganancia neta</strong> por turno y por día</div>
+      <div class="ticker-item">🎨 <strong>Marca Blanca con tu logo</strong> y carteles QR listos para imprimir</div>
       <div class="ticker-item">⚡ <strong>Comandas en 1 toque</strong> sin papeles perdidos</div>
-      <div class="ticker-item">💳 <strong>Efectivo, QR, Débito y Crédito</strong> separados en caja</div>
-      <div class="ticker-item">🔐 <strong>PIN individual</strong> para Mozos, Cocina y Encargados</div>
-      <div class="ticker-item">📦 <strong>Descuento automático de stock</strong> y botón Agotado</div>
-      <div class="ticker-item">🛵 <strong>Delivery y Take Away</strong> con cálculo de envío</div>
-      <div class="ticker-item">📊 <strong>Exportación a Excel / CSV</strong> lista para tu contador</div>
+      <div class="ticker-item">🛵 <strong>Delivery y Take Away propio</strong> sin pagar 25% de comisión</div>
+      <div class="ticker-item">💳 <strong>Cierre Z Multi-Canal:</strong> Efectivo, Transferencia/QR y Lote Tarjetas</div>
+      <div class="ticker-item">🚨 <strong>Auditoría anti-fraude</strong> de ítems anulados y arqueo ciego</div>
+      <div class="ticker-item">📈 <strong>Cálculo de costos y ganancia neta</strong> por turno y por día</div>
+      <div class="ticker-item">🎨 <strong>Marca Blanca con tu logo</strong> y carteles QR listos para imprimir</div>
     </div>
   </div>
 
@@ -893,40 +936,40 @@
   <section id="funciones">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-kicker">Operación sin fricción</span>
+        <span class="sec-kicker">Control total de punta a punta</span>
         <h2>Diseñado para el ritmo real de un servicio lleno</h2>
-        <p>Cada pantalla está pensada para resolverse con el pulgar en segundos, incluso un sábado a la noche.</p>
+        <p>Desde que el cliente escanea el QR o pide por Instagram hasta que cerrás el turno conciliando efectivo, transferencias y Posnet.</p>
       </div>
 
       <div class="bento">
         <div class="bento-card span-7 reveal">
           <div class="bento-icon">🍳</div>
           <h3>Sincronización en vivo entre Salón, Cocina y Caja</h3>
-          <p>Apenas el mozo confirma el pedido en la mesa, la comanda aparece en la pantalla KDS de cocina o barra con sus variantes, agregados y notas de alergia. Un solo toque la marca entregada.</p>
+          <p>Apenas el mozo o el cliente desde el QR confirma el pedido, la comanda aparece en la pantalla KDS de cocina o barra con sus variantes, agregados y notas. Además, al cerrar la caja, la carta web se pausa automáticamente para no recibir pedidos fuera de horario.</p>
         </div>
 
         <div class="bento-card span-5 reveal">
-          <div class="bento-icon">💰</div>
-          <h3>Caja blindada por medio de pago</h3>
-          <p>Olvidate de diferencias al cierre. MesaFlow separa automáticamente Efectivo disponible, Transferencia/QR, Tarjeta de Débito y Crédito, más retiros de proveedores.</p>
+          <div class="bento-icon">🛵</div>
+          <h3>Tu propio link de Delivery y Take Away</h3>
+          <p>Poné el link personalizado de tu local en la bio de Instagram o WhatsApp. Tus clientes piden directo sin pagar comisiones abusivas a apps externas y el pedido entra directo a tu cocina.</p>
         </div>
 
         <div class="bento-card span-4 reveal">
-          <div class="bento-icon">🔐</div>
-          <h3>Control por PIN de 4 dígitos</h3>
-          <p>Cada empleado entra con su clave. Los mozos ven mesas y pedidos; cocina ve comandas; solo vos accedés a la caja y precios.</p>
+          <div class="bento-icon">🛡️</div>
+          <h3>Cierre Z Multi-Canal y Auditoría</h3>
+          <p>Arqueo ciego de efectivo para encargados, conciliación de Transferencias/QR y cierre de lote Posnet, registro de ítems anulados y PIN de supervisor para descuentos.</p>
         </div>
 
         <div class="bento-card span-4 reveal">
-          <div class="bento-icon">📦</div>
-          <h3>Stock inteligente + Pausa rápida</h3>
-          <p>Si se termina un plato en medio del turno, lo marcás "Agotado" en 1 segundo y ningún mozo vuelve a venderlo por error.</p>
+          <div class="bento-icon">📈</div>
+          <h3>Costos, Margen y Ganancia Neta</h3>
+          <p>Cargá el costo de elaboración de cada plato y conocé en tiempo real cuánto ganó limpiamente tu local hoy descontando mercadería y gastos de proveedores.</p>
         </div>
 
         <div class="bento-card span-4 reveal">
           <div class="bento-icon">🎨</div>
-          <h3>Tu marca y Carta QR propia</h3>
-          <p>Personalizá colores, logo y generá códigos QR para tus mesas. Importá tu carta de 80+ platos copiando y pegando en 30 segundos.</p>
+          <h3>Tu Logo propio y Carteles QR</h3>
+          <p>Subí el logo de tu restaurante, elegí los colores de tu marca e imprimí en un clic la planilla de códigos QR individuales para cada mesa.</p>
         </div>
       </div>
     </div>
@@ -938,7 +981,7 @@
       <div class="calc-box reveal">
         <div>
           <span class="sec-kicker">Calculadora de impacto</span>
-          <h2 style="font-size:1.85rem; margin-bottom:10px;">¿Cuánto perdés hoy por errores de comanda o demoras al cobrar?</h2>
+          <h2 style="font-size:1.85rem; margin-bottom:10px;">¿Cuánto recuperás al mes ordenando comandas, caja y delivery directo?</h2>
           <p style="color:var(--muted); font-size:0.95rem;">Mové el deslizador según la cantidad de mesas de tu local:</p>
           <div style="margin-top:18px;">
             <div style="display:flex; justify-content:space-between; font-weight:800;">
@@ -950,10 +993,10 @@
         </div>
 
         <div class="calc-result">
-          <span style="font-size:0.82rem; color:var(--muted); font-weight:700; text-transform:uppercase;">Recupero mensual estimado</span>
+          <span style="font-size:0.82rem; color:var(--muted); font-weight:700; text-transform:uppercase;">Ahorro y recupero mensual estimado</span>
           <div class="calc-big" id="calcMoney">$324.000</div>
           <p style="font-size:0.85rem; color:#CBD5E1;" id="calcHours">
-            + 18 horas ahorradas en cierres de caja y rotación de mesas más rápida.
+            + 18 horas ahorradas al mes en cierres de caja y comisiones evitadas.
           </p>
         </div>
       </div>
@@ -964,64 +1007,93 @@
   <section id="planes">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-kicker">Precios transparentes</span>
+        <span class="sec-kicker">Precios claros y finales</span>
         <h2>Elegí el plan según el tamaño de tu local</h2>
-        <p>Sin contratos de permanencia ni porcentajes sobre tus ventas. 14 días de prueba gratis en cualquier plan.</p>
+        <p>Sin contratos de permanencia ni porcentajes sobre tus ventas. Probá cualquier plan gratis durante 15 días.</p>
+      </div>
+
+      <!-- BANNER SETUP LLAVE EN MANO -->
+      <div class="setup-banner reveal">
+        <div>
+          <span class="setup-badge">Beneficio de lanzamiento</span>
+          <div style="font-weight:800; font-size:1.05rem; margin-top:2px;">
+            Instalación y Puesta en Marcha "Llave en Mano" ($35.000 por única vez) — <span style="color:#6EE7B7;">¡100% BONIFICADA!</span>
+          </div>
+          <div style="color:var(--muted); font-size:0.88rem;">
+            Dejamos tu local listo para trabajar sin que pierdas tiempo configurando: cargamos toda tu carta, armamos tus mesas, creamos los PINs de tu equipo, configuramos tu logo y preparamos los carteles QR listos para imprimir <strong>100% sin cargo</strong> al activar el <strong>Plan Full</strong> o abonando <strong>3 meses juntos</strong> en Esencial o Pro.
+          </div>
+        </div>
+        <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20aprovechar%20la%20instalaci%C3%B3n%20bonificada%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="border-color:var(--green); color:#6EE7B7;">
+          Consultar bonificación
+        </a>
       </div>
 
       <div class="plans-grid">
+        <!-- PLAN ESENCIAL -->
         <div class="plan-card reveal">
           <div>
-            <div style="font-weight:800; font-size:1.15rem;">Esencial</div>
+            <div style="font-weight:800; font-size:1.2rem;">Esencial</div>
             <div style="color:var(--muted); font-size:0.88rem;">Cafeterías, bares chicos y food trucks.</div>
-            <div class="price-val">$45.000 <span>/mes</span></div>
+            <div class="plan-limit">Hasta 8 mesas activas</div>
+            <div class="price-val">$29.000 <span>/mes</span></div>
+            <div class="setup-note">✓ Instalación bonificada pagando 3 meses</div>
             <ul class="plan-features">
-              <li>Control de Salón y Mesas en vivo</li>
+              <li>Control de Salón y Mesas en tiempo real</li>
               <li>Comandas a Cocina y Barra (KDS)</li>
+              <li>Marca Blanca: tu logo, nombre y color</li>
               <li>Arqueo de Caja (Efectivo, QR, Débito, Crédito)</li>
-              <li>Usuarios ilimitados con PIN por rol</li>
-              <li>Personalización de marca del local</li>
+              <li>Gestión de carta, precios y control de stock</li>
+              <li>Dispositivos y usuarios con PIN ilimitados</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Esencial%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
-            Probar 14 días gratis
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Esencial%20($29.000)%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
+            Probar 15 días gratis
           </a>
         </div>
 
+        <!-- PLAN PRO -->
         <div class="plan-card popular reveal">
           <div class="ribbon">Más elegido</div>
           <div>
-            <div style="font-weight:800; font-size:1.15rem;">Pro</div>
+            <div style="font-weight:800; font-size:1.2rem;">Pro</div>
             <div style="color:var(--muted); font-size:0.88rem;">Restaurantes y restobares con salón activo.</div>
-            <div class="price-val">$60.000 <span>/mes</span></div>
+            <div class="plan-limit">Hasta 25 mesas activas</div>
+            <div class="price-val">$52.000 <span>/mes</span></div>
+            <div class="setup-note">✓ Instalación bonificada pagando 3 meses</div>
             <ul class="plan-features">
               <li>Todo lo incluido en Plan Esencial</li>
-              <li>Plano visual interactivo de mesas</li>
-              <li>Carta QR digital para mesas</li>
+              <li>Autopedido QR en mesa + cierre automático</li>
+              <li>Descarga de QR en PNG y planilla imprimible</li>
+              <li>Plano visual interactivo del salón</li>
+              <li>Alertas sonoras de comandas nuevas en Cocina</li>
               <li>Exportación contable a Excel / CSV</li>
-              <li>Alarma de comandas nuevas en Cocina</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Pro%20de%20MesaFlow." target="_blank" class="btn btn-primary" style="width:100%;">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Pro%20($52.000)%20de%20MesaFlow." target="_blank" class="btn btn-primary" style="width:100%;">
             Empezar con Plan Pro
           </a>
         </div>
 
-        <div class="plan-card reveal">
+        <!-- PLAN FULL -->
+        <div class="plan-card full-tier reveal">
+          <div class="ribbon ribbon-blue">Control Total</div>
           <div>
-            <div style="font-weight:800; font-size:1.15rem;">Full</div>
-            <div style="color:var(--muted); font-size:0.88rem;">Salón completo + Delivery y Take Away.</div>
-            <div class="price-val">$110.000 <span>/mes</span></div>
+            <div style="font-weight:800; font-size:1.2rem;">Full</div>
+            <div style="color:var(--muted); font-size:0.88rem;">Locales con empleados, alto volumen y delivery.</div>
+            <div class="plan-limit">Mesas ilimitadas</div>
+            <div class="price-val">$99.000 <span>/mes</span></div>
+            <div class="setup-note">🎁 ¡Puesta en marcha Llave en Mano GRATIS desde el mes 1!</div>
             <ul class="plan-features">
               <li>Todo lo incluido en Plan Pro</li>
-              <li>Módulo completo de Delivery & Take Away</li>
-              <li>Cálculo automático de tarifas de envío</li>
-              <li>Multi-dispositivo ilimitado en tiempo real</li>
-              <li>Carga inicial de carta asistida sin cargo</li>
+              <li>Link propio de Delivery & Take Away (0% comisión)</li>
+              <li>Cierre Z Multi-Canal + Historial histórico de turnos</li>
+              <li>Arqueo ciego de efectivo y permisos granulares</li>
+              <li>Auditoría de ítems anulados + PIN para descuentos</li>
+              <li>Cálculo de costos y Ganancia Neta del turno/día</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Full%20de%20MesaFlow." target="_blank" class="btn btn-ghost" style="width:100%;">
-            Probar 14 días gratis
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Full%20($99.000)%20con%20instalaci%C3%B3n%20bonificada." target="_blank" class="btn btn-ghost" style="width:100%; border-color:var(--blue); color:#7DD3FC;">
+            Activar Plan Full
           </a>
         </div>
       </div>
@@ -1035,15 +1107,15 @@
         <h2 style="font-size:clamp(1.75rem, 3.5vw, 2.5rem); margin-bottom:12px;">
           ¿Lo probamos hoy mismo en tu local?
         </h2>
-        <p style="color:var(--muted); max-width:560px; margin:0 auto 28px;">
-          Te creamos tu cuenta en 3 minutos, cargamos tu menú y lo dejás andando en tus propios celulares sin gastar un peso durante 14 días.
+        <p style="color:var(--muted); max-width:580px; margin:0 auto 28px;">
+          Configuramos tu cuenta, cargamos tu menú con tu logo y lo dejás andando en tus propios celulares y PC sin gastar un peso durante 15 días.
         </p>
         <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
           <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20activar%20MesaFlow%20en%20mi%20local." target="_blank" class="btn btn-primary">
             💬 Escribir por WhatsApp ahora
           </a>
-          <a href="https://expo.dev/artifacts/eas/dSX8e9VHWeSWNbfN_jTqIfGuEoBNuEOWo2xE7zsGc9c.apk" class="btn btn-ghost">
-            📲 Descargar App Android (.APK)
+          <a href="https://mesaflow-pos-chi.vercel.app" target="_blank" class="btn btn-ghost">
+            🌐 Abrir Web App POS
           </a>
         </div>
       </div>
@@ -1060,7 +1132,7 @@
     const simState = {
       selectedId: 'M1',
       cash: 50000,
-      movements: [{ concept: 'Fondo inicial de caja', amount: 50000, method: 'Efectivo' }],
+      movements: [{ concept: 'Apertura de caja (Fondo inicial)', amount: 50000, method: 'Efectivo' }],
       tables: [
         { id: 'M1', sector: 'Salón', status: 'free', items: [] },
         { id: 'M2', sector: 'Salón', status: 'waiting_food', items: [{ name: 'Milanesa c/ Papas', price: 12900, sent: true }] },
@@ -1223,7 +1295,7 @@
       const horas = Math.round(mesas * 1.5);
       document.getElementById('calcMoney').textContent = `$${ahorroMensual.toLocaleString('es-AR')}`;
       document.getElementById('calcHours').textContent =
-        `+ ${horas} horas ahorradas al mes en cierres de caja y rotación de mesas más rápida.`;
+        `+ ${horas} horas ahorradas al mes en cierres de caja y comisiones evitadas.`;
     }
 
     const observer = new IntersectionObserver((entries) => {
