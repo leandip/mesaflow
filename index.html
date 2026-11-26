@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MesaFlow | Sistema POS Intuitivo y Caja Blindada para Bares y Restaurantes</title>
-  <meta name="description" content="Tan intuitivo que tus mozos lo usan sin capacitación. Controlá comandas, evitá robos y errores de caja con arqueo ciego, auditoría de anulaciones y cierre multi-canal." />
+  <title>MesaFlow | Sistema POS en Tiempo Real para Bares y Restaurantes</title>
+  <meta name="description" content="Sistema gastronómico intuitivo y seguro que funciona en cualquier dispositivo, incluso si se corta el Wi-Fi del local. Ahorrá tiempo y plata con caja blindada y delivery sin comisiones." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E1628'/%3E%3Cpath d='M22 72V36c0-8 11-11 16-4l12 16 12-16c5-7 16-4 16 4v20' fill='none' stroke='%23F47616' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='50' y1='48' x2='50' y2='72' stroke='%23F47616' stroke-width='11' stroke-linecap='round'/%3E%3Ccircle cx='78' cy='70' r='7.5' fill='%2300BA7C'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -175,6 +175,7 @@
 
     .nav-cta-mobile { display: none; }
 
+    /* HERO + DEMO INTERACTIVA */
     .hero {
       padding: 46px 0 64px;
     }
@@ -220,7 +221,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.15rem, 4.4vw, 3.5rem);
+      font-size: clamp(2.15rem, 4.4vw, 3.55rem);
       line-height: 1.08;
       letter-spacing: -1.2px;
       margin-bottom: 18px;
@@ -236,7 +237,7 @@
       color: var(--muted);
       font-size: 1.04rem;
       margin-bottom: 26px;
-      max-width: 515px;
+      max-width: 510px;
     }
 
     .hero-actions {
@@ -256,7 +257,7 @@
     .metric strong {
       display: block;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       color: var(--text);
     }
 
@@ -479,7 +480,7 @@
     .ticker-track {
       display: inline-flex;
       gap: 44px;
-      animation: marquee 28s linear infinite;
+      animation: marquee 30s linear infinite;
     }
 
     .ticker-item {
@@ -502,7 +503,7 @@
 
     .sec-head {
       text-align: center;
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto 48px;
     }
 
@@ -524,6 +525,7 @@
 
     .sec-head p { color: var(--muted); font-size: 1.02rem; }
 
+    /* BENTO GRID DE 6 PILARES */
     .bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -543,8 +545,7 @@
       border-color: var(--border-strong);
     }
 
-    .span-7 { grid-column: span 7; }
-    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
     .span-4 { grid-column: span 4; }
 
     .bento-icon {
@@ -560,63 +561,100 @@
     }
 
     .bento-card h3 {
-      font-size: 1.22rem;
+      font-size: 1.2rem;
       margin-bottom: 8px;
     }
 
     .bento-card p {
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.93rem;
     }
 
-    /* GALERÍA DE CAPTURAS REALES */
-    .screens-grid {
+    /* GALERÍA MIXTA: CAPTURAS DE PC ESCRITORIO + APP CELULAR */
+    .showcase-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+      align-items: stretch;
     }
 
-    .screen-card {
+    .device-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
-      padding: 14px;
-      text-align: center;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: transform 0.25s, border-color 0.25s;
     }
 
-    .screen-card:hover {
+    .device-card:hover {
       transform: translateY(-5px);
       border-color: var(--border-strong);
     }
 
-    .screen-frame {
+    .device-desktop { grid-column: span 7; }
+    .device-mobile { grid-column: span 5; }
+
+    .device-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .badge-pc {
+      background: var(--blue-bg);
+      color: var(--blue);
+    }
+
+    .badge-phone {
+      background: rgba(244, 118, 22, 0.15);
+      color: var(--primary);
+    }
+
+    .frame-pc {
       background: #090E1A;
-      border-radius: 16px;
-      padding: 6px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 14px;
+      padding: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
       margin-bottom: 14px;
       overflow: hidden;
     }
 
-    .screen-frame img {
+    .frame-pc img {
       width: 100%;
-      aspect-ratio: 9 / 19;
+      aspect-ratio: 16 / 10;
       object-fit: cover;
       object-position: top;
-      border-radius: 11px;
+      border-radius: 9px;
       display: block;
     }
 
-    .screen-step {
-      display: inline-block;
-      background: rgba(244, 118, 22, 0.15);
-      color: var(--primary);
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 3px 9px;
-      border-radius: 99px;
-      margin-bottom: 6px;
+    .frame-phone {
+      background: #090E1A;
+      border-radius: 18px;
+      padding: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      margin: 0 auto 14px;
+      max-width: 240px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .frame-phone img {
+      width: 100%;
+      aspect-ratio: 9 / 18;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+      display: block;
     }
 
     .calc-box {
@@ -809,8 +847,7 @@
     @media (max-width: 960px) {
       .hero-grid, .calc-box { grid-template-columns: 1fr; }
       .plans-grid { grid-template-columns: 1fr; }
-      .screens-grid { grid-template-columns: repeat(2, 1fr); }
-      .span-7, .span-5, .span-4 { grid-column: span 12; }
+      .span-6, .span-4, .device-desktop, .device-mobile { grid-column: span 12; }
       .nav-menu a.nav-link { display: none; }
       .tag-desktop { display: none; }
       .tag-mobile { display: inline-flex; }
@@ -826,7 +863,6 @@
         font-size: 0.8rem;
         border-radius: 10px;
       }
-      .screens-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
       .hero { padding: 32px 0 52px; }
       .hero-actions .btn { width: 100%; }
       .hero-metrics { gap: 16px; }
@@ -850,8 +886,8 @@
         Mesa<span>Flow</span>
       </a>
       <nav class="nav-menu">
-        <a href="#funciones" class="nav-link">Control y Seguridad</a>
-        <a href="#capturas" class="nav-link">La App por dentro</a>
+        <a href="#funciones" class="nav-link">Beneficios</a>
+        <a href="#capturas" class="nav-link">PC y Celular</a>
         <a href="#planes" class="nav-link">Planes</a>
         <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20MesaFlow%20gratis%2015%20d%C3%ADas." target="_blank" class="btn btn-primary nav-cta-desktop">
           Probar 15 días gratis
@@ -863,38 +899,38 @@
     </div>
   </header>
 
-  <!-- HERO CON SIMULADOR REAL EN VIVO -->
+  <!-- HERO DIRECTO Y SIMPLE -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <a href="#simulador" class="live-tag tag-desktop">
           <span class="pulse-dot"></span>
-          Probá lo fácil que es acá al lado →
+          Probá la app en vivo acá al lado →
         </a>
         <a href="#simulador" class="live-tag tag-mobile">
           <span class="pulse-dot"></span>
-          Probá lo fácil que es acá abajo ↓
+          Probá la app en vivo acá abajo ↓
         </a>
-        <h1>Tan intuitivo que se aprende en 2 minutos. <span>Control total para evitar robos y errores.</span></h1>
+        <h1>Dejá de perder comandas y <span>cerrá caja al centavo.</span></h1>
         <p class="hero-sub">
-          Olvidate de los sistemas viejos llenos de menús confusos. Tus mozos toman pedidos con el pulgar desde el celular mientras vos blindás tu caja contra anulaciones sospechosas, faltantes de efectivo y errores de cobro.
+          El sistema gastronómico intuitivo que funciona en cualquier celular, tablet o PC —incluso si se corta el Wi-Fi del local—. Ahorrá tiempo, evitá robos y errores de caja y vendé por Delivery sin pagar comisiones.
         </p>
         <div class="hero-actions">
           <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20activar%20mi%20prueba%20gratuita%20de%2015%20d%C3%ADas%20en%20MesaFlow." target="_blank" class="btn btn-primary">
             Activar 15 días sin cargo
           </a>
           <a href="#capturas" class="btn btn-ghost">
-            Ver capturas reales
+            Ver en PC y Celular
           </a>
         </div>
         <div class="hero-metrics">
           <div class="metric">
-            <strong>2 min</strong>
-            <span>Curva de aprendizaje</span>
+            <strong>Sin cortes</strong>
+            <span>Funciona sin Wi-Fi fijo</span>
           </div>
           <div class="metric">
-            <strong>100%</strong>
-            <span>Trazabilidad por PIN</span>
+            <strong>Cualquier equipo</strong>
+            <span>Celular, Tablet o PC</span>
           </div>
           <div class="metric">
             <strong>0%</strong>
@@ -969,108 +1005,128 @@
   <!-- TICKER EN MOVIMIENTO -->
   <div class="ticker-wrap">
     <div class="ticker-track">
-      <div class="ticker-item">👆 <strong>Interfaz ultra intuitiva</strong> sin manuales ni capacitación eterna</div>
-      <div class="ticker-item">🚨 <strong>Auditoría anti-robo:</strong> registro de platos anulados y descuentos con PIN</div>
-      <div class="ticker-item">🔒 <strong>Arqueo ciego de efectivo</strong> para evitar faltantes y sobrantes ocultos</div>
-      <div class="ticker-item">💳 <strong>Cierre Z Multi-Canal:</strong> Efectivo, Transferencia/QR y Lote Tarjetas</div>
-      <div class="ticker-item">🛵 <strong>Delivery y Take Away propio</strong> sin pagar 25% de comisión</div>
-      <div class="ticker-item">📈 <strong>Cálculo de costos y ganancia neta</strong> real por turno y por día</div>
-      <div class="ticker-item">👆 <strong>Interfaz ultra intuitiva</strong> sin manuales ni capacitación eterna</div>
-      <div class="ticker-item">🚨 <strong>Auditoría anti-robo:</strong> registro de platos anulados y descuentos con PIN</div>
-      <div class="ticker-item">🔒 <strong>Arqueo ciego de efectivo</strong> para evitar faltantes y sobrantes ocultos</div>
-      <div class="ticker-item">💳 <strong>Cierre Z Multi-Canal:</strong> Efectivo, Transferencia/QR y Lote Tarjetas</div>
-      <div class="ticker-item">🛵 <strong>Delivery y Take Away propio</strong> sin pagar 25% de comisión</div>
-      <div class="ticker-item">📈 <strong>Cálculo de costos y ganancia neta</strong> real por turno y por día</div>
+      <div class="ticker-item">📶 <strong>No dependés del Wi-Fi:</strong> seguís trabajando con datos del celular o modo local</div>
+      <div class="ticker-item">📱 <strong>Para cualquier dispositivo:</strong> Android, PC Windows, Tablet o Web sin extras</div>
+      <div class="ticker-item">👆 <strong>Súper intuitivo:</strong> tus mozos lo usan en 2 minutos sin capacitación</div>
+      <div class="ticker-item">🚨 <strong>Seguro y blindado:</strong> auditoría anti-robo, arqueo ciego y PIN por empleado</div>
+      <div class="ticker-item">🎨 <strong>100% personalizable:</strong> tu logo, tus colores, tus mesas y carteles QR propios</div>
+      <div class="ticker-item">💸 <strong>Ahorrá tiempo y plata:</strong> cierres en 2 minutos y Delivery sin comisiones</div>
+      <div class="ticker-item">📶 <strong>No dependés del Wi-Fi:</strong> seguís trabajando con datos del celular o modo local</div>
+      <div class="ticker-item">📱 <strong>Para cualquier dispositivo:</strong> Android, PC Windows, Tablet o Web sin extras</div>
+      <div class="ticker-item">👆 <strong>Súper intuitivo:</strong> tus mozos lo usan en 2 minutos sin capacitación</div>
+      <div class="ticker-item">🚨 <strong>Seguro y blindado:</strong> auditoría anti-robo, arqueo ciego y PIN por empleado</div>
+      <div class="ticker-item">🎨 <strong>100% personalizable:</strong> tu logo, tus colores, tus mesas y carteles QR propios</div>
+      <div class="ticker-item">💸 <strong>Ahorrá tiempo y plata:</strong> cierres en 2 minutos y Delivery sin comisiones</div>
     </div>
   </div>
 
-  <!-- BENTO GRID FUNCIONES (ENFOQUE EN INTUITIVIDAD + ANTI-ROBO / ANTI-ERRORES) -->
+  <!-- BENTO GRID: LOS 6 PILARES DE MESAFLOW -->
   <section id="funciones">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-kicker">Simplicidad por fuera, blindaje por dentro</span>
-        <h2>Fácil para tu equipo. Inflexible con los errores y faltantes.</h2>
-        <p>Diseñado para que un mozo nuevo tome pedidos desde su primer minuto, mientras vos tenés auditoría total incluso cuando no estás en el local.</p>
+        <span class="sec-kicker">Pensado para la realidad de tu negocio</span>
+        <h2>Simple para tu equipo. Blindado para tu tranquilidad.</h2>
+        <p>Resolvé de raíz los problemas que te hacen perder plata todos los fines de semana sin comprar equipamiento caro.</p>
       </div>
 
       <div class="bento">
-        <div class="bento-card span-7 reveal">
+        <div class="bento-card span-6 reveal">
+          <div class="bento-icon">📶</div>
+          <h3>No necesitás internet fijo ni servidores en el local</h3>
+          <p>A diferencia de los sistemas viejos que se frenan si se cae el Wi-Fi o se cuelga la PC de caja, MesaFlow guarda todo localmente y sincroniza con los datos 4G de cualquier celular. Tu salón nunca deja de facturar.</p>
+        </div>
+
+        <div class="bento-card span-6 reveal">
+          <div class="bento-icon">💻</div>
+          <h3>Funciona en cualquier dispositivo sin licencias extra</h3>
+          <p>Usá tu PC de escritorio en caja, una tablet en cocina y los celulares Android o iPhone que ya tienen tus mozos. Conectá todas las pantallas que necesites bajo un mismo abono fijo mensual.</p>
+        </div>
+
+        <div class="bento-card span-4 reveal">
           <div class="bento-icon">👆</div>
-          <h3>Ultra intuitivo: cero fricción en horas pico</h3>
-          <p>Botones grandes, colores claros por estado de mesa y modificadores en un toque (*Sin sal, Punto jugoso, Sin TACC*). Elimina los errores de lectura de comandas escritas a mano y evita que cocina prepare platos equivocados.</p>
-        </div>
-
-        <div class="bento-card span-5 reveal">
-          <div class="bento-icon">🚨</div>
-          <h3>Escudo anti-robo y control de anulaciones</h3>
-          <p>Ningún plato enviado a cocina puede borrarse en silencio: exige PIN de encargado y queda registrado quién lo anuló, en qué mesa y a qué hora. Lo mismo para aplicar descuentos o modificar el fondo inicial.</p>
+          <h3>Súper intuitivo</h3>
+          <p>Botones grandes, colores claros por estado de mesa y modificadores en un toque. Un mozo nuevo toma pedidos sin errores desde su primer turno, sin manuales ni capacitación eterna.</p>
         </div>
 
         <div class="bento-card span-4 reveal">
-          <div class="bento-icon">🔒</div>
-          <h3>Arqueo Ciego y Cierre Z Multi-Canal</h3>
-          <p>El encargado declara los billetes contados, las transferencias recibidas y el cierre de lote Posnet sin ver cuánto "debería" haber en efectivo. El sistema calcula al instante si sobra o falta dinero en cada canal.</p>
+          <div class="bento-icon">🛡️</div>
+          <h3>Seguro contra robos y errores</h3>
+          <p>Auditoría de platos anulados, arqueo ciego de efectivo, PIN individual por empleado y Cierre Z Multi-Canal que concilia Efectivo, Transferencias/QR y cierre de lote Posnet al centavo.</p>
         </div>
 
         <div class="bento-card span-4 reveal">
-          <div class="bento-icon">📈</div>
-          <h3>Ganancia Neta Real (no solo facturación)</h3>
-          <p>Cargá el costo de cada plato y descontá gastos de proveedores en el acto. Sabé exactamente cuánta plata limpia ganó tu negocio en cada turno y en el acumulado del día.</p>
-        </div>
-
-        <div class="bento-card span-4 reveal">
-          <div class="bento-icon">🛵</div>
-          <h3>Carta QR y Delivery propio sin comisiones</h3>
-          <p>Tus clientes escanean el QR en la mesa o piden desde tu link de Instagram/WhatsApp. Cuando cerrás la caja al final del turno, la carta online se pausa sola para evitar pedidos fuera de horario.</p>
+          <div class="bento-icon">🎨</div>
+          <h3>100 % personalizable</h3>
+          <p>Configurá tu logo, los colores de tu marca, tus sectores de mesas, tus propios carteles QR imprimibles y tu link directo de Delivery y Take Away sin pagar comisiones a terceros.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERÍA DE CAPTURAS REALES -->
+  <!-- GALERÍA MIXTA: PC DE ESCRITORIO + APP CELULAR -->
   <section id="capturas" style="padding-top: 10px;">
     <div class="container">
       <div class="sec-head reveal">
-        <span class="sec-kicker">La app real por dentro</span>
-        <h2>Así lo ven tus mozos, tu cocina y vos</h2>
-        <p>Interfaz oscura de alto contraste, clara y directa: cada miembro de tu equipo ve únicamente lo que necesita para trabajar sin distracciones.</p>
+        <span class="sec-kicker">Multiplataforma real</span>
+        <h2>Controlá desde la PC de caja o desde tu celular</h2>
+        <p>Todo sincronizado en tiempo real: tus mozos cargan desde el celular en la mesa y vos supervisás salón, cocina y arqueo desde la computadora o desde tu casa.</p>
       </div>
 
-      <div class="screens-grid">
-        <div class="screen-card reveal">
-          <div class="screen-frame">
-            <img src="screen-salon.png" alt="Mapa de Salón en vivo MesaFlow" />
+      <div class="showcase-grid">
+        <!-- CAPTURA 1: PC ESCRITORIO (SALÓN / PLANO) -->
+        <div class="device-card device-desktop reveal">
+          <div>
+            <span class="device-badge badge-pc">💻 Vista PC de Escritorio • Caja y Salón</span>
+            <div class="frame-pc">
+              <img src="pc-salon.png" alt="Vista PC Salón y Plano Interactivo MesaFlow" />
+            </div>
           </div>
-          <span class="screen-step">Paso 1 • Salón</span>
-          <strong style="display:block; font-size:1rem; margin-bottom:4px;">Control visual de mesas</strong>
-          <span style="font-size:0.82rem; color:var(--muted);">Identificá al instante mesas libres, esperando comida o pidiendo la cuenta.</span>
+          <div>
+            <strong style="display:block; font-size:1.05rem; margin-bottom:4px;">Plano visual y control completo del salón</strong>
+            <span style="font-size:0.85rem; color:var(--muted);">Visualizá todas tus mesas, tiempos de espera y pedidos activos en pantalla grande con un solo vistazo.</span>
+          </div>
         </div>
 
-        <div class="screen-card reveal">
-          <div class="screen-frame">
-            <img src="screen-mesa.png" alt="Toma de pedidos rápida MesaFlow" />
+        <!-- CAPTURA 2: CELULAR (COMANDA RÁPIDA MOZO) -->
+        <div class="device-card device-mobile reveal">
+          <div>
+            <span class="device-badge badge-phone">📱 App Celular • Mozos</span>
+            <div class="frame-phone">
+              <img src="app-pedido.png" alt="App Celular Toma de Pedidos MesaFlow" />
+            </div>
           </div>
-          <span class="screen-step">Paso 2 • Pedido</span>
-          <strong style="display:block; font-size:1rem; margin-bottom:4px;">Comanda sin errores</strong>
-          <span style="font-size:0.82rem; color:var(--muted);">Buscador instantáneo, variantes, extras y notas rápidas con un toque.</span>
+          <div>
+            <strong style="display:block; font-size:1.05rem; margin-bottom:4px;">Comandas en un toque desde el bolsillo</strong>
+            <span style="font-size:0.85rem; color:var(--muted);">Buscador rápido, variantes y notas para cocina sin anotar papeles.</span>
+          </div>
         </div>
 
-        <div class="screen-card reveal">
-          <div class="screen-frame">
-            <img src="screen-kds.png" alt="Pantalla de Cocina KDS MesaFlow" />
+        <!-- CAPTURA 3: CELULAR / TABLET (COCINA KDS) -->
+        <div class="device-card device-mobile reveal">
+          <div>
+            <span class="device-badge badge-phone">📱 App Celular / Tablet • Cocina</span>
+            <div class="frame-phone">
+              <img src="app-cocina.png" alt="Pantalla Cocina KDS MesaFlow" />
+            </div>
           </div>
-          <span class="screen-step">Paso 3 • Cocina</span>
-          <strong style="display:block; font-size:1rem; margin-bottom:4px;">Pantalla KDS en vivo</strong>
-          <span style="font-size:0.82rem; color:var(--muted);">Alerta sonora al entrar pedidos, control de demoras y despacho en 1 clic.</span>
+          <div>
+            <strong style="display:block; font-size:1.05rem; margin-bottom:4px;">Cocina y Barra sin gritos ni papeles</strong>
+            <span style="font-size:0.85rem; color:var(--muted);">Alerta sonora al entrar pedidos y despacho en un solo toque.</span>
+          </div>
         </div>
 
-        <div class="screen-card reveal">
-          <div class="screen-frame">
-            <img src="screen-caja.png" alt="Cierre Z Multi-Canal y Ganancia Neta MesaFlow" />
+        <!-- CAPTURA 4: PC ESCRITORIO (ARQUEO, AUDITORÍA Y GANANCIA NETA) -->
+        <div class="device-card device-desktop reveal">
+          <div>
+            <span class="device-badge badge-pc">💻 Vista PC de Escritorio • Arqueo y Rentabilidad</span>
+            <div class="frame-pc">
+              <img src="pc-caja.png" alt="Vista PC Arqueo Cierre Z y Ganancia Neta MesaFlow" />
+            </div>
           </div>
-          <span class="screen-step">Paso 4 • Caja</span>
-          <strong style="display:block; font-size:1rem; margin-bottom:4px;">Arqueo y Ganancia Neta</strong>
-          <span style="font-size:0.82rem; color:var(--muted);">Conciliación de efectivo, QR y tarjetas, auditoría y margen real del día.</span>
+          <div>
+            <strong style="display:block; font-size:1.05rem; margin-bottom:4px;">Cierre Z Multi-Canal, Auditoría y Ganancia Neta</strong>
+            <span style="font-size:0.85rem; color:var(--muted);">Conciliá efectivo, transferencias y tarjetas, auditá anulaciones y conocé tu ganancia limpia del día.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1081,8 +1137,8 @@
     <div class="container">
       <div class="calc-box reveal">
         <div>
-          <span class="sec-kicker">Calculadora de impacto</span>
-          <h2 style="font-size:1.85rem; margin-bottom:10px;">¿Cuánto dinero frenás de perder evitando errores de comanda, fugas de caja y comisiones?</h2>
+          <span class="sec-kicker">Ahorrá tiempo y plata</span>
+          <h2 style="font-size:1.85rem; margin-bottom:10px;">¿Cuánto dinero recuperás al mes evitando errores de comanda, fugas de caja y comisiones?</h2>
           <p style="color:var(--muted); font-size:0.95rem;">Mové el deslizador según la cantidad de mesas de tu local:</p>
           <div style="margin-top:18px;">
             <div style="display:flex; justify-content:space-between; font-weight:800;">
@@ -1152,14 +1208,14 @@
           </a>
         </div>
 
-        <!-- PLAN PRO -->
+        <!-- PLAN PRO ($49.000) -->
         <div class="plan-card popular reveal">
           <div class="ribbon">Más elegido</div>
           <div>
             <div style="font-weight:800; font-size:1.2rem;">Pro</div>
             <div style="color:var(--muted); font-size:0.88rem;">Restaurantes y restobares con salón activo.</div>
             <div class="plan-limit">Hasta 25 mesas activas</div>
-            <div class="price-val">$52.000 <span>/mes</span></div>
+            <div class="price-val">$49.000 <span>/mes</span></div>
             <div class="setup-note">✓ Instalación bonificada pagando 3 meses</div>
             <ul class="plan-features">
               <li>Todo lo incluido en Plan Esencial</li>
@@ -1170,7 +1226,7 @@
               <li>Exportación contable a Excel / CSV</li>
             </ul>
           </div>
-          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Pro%20($52.000)%20de%20MesaFlow." target="_blank" class="btn btn-primary" style="width:100%;">
+          <a href="https://wa.me/5493572408800?text=Hola!%20Quiero%20probar%20el%20Plan%20Pro%20($49.000)%20de%20MesaFlow." target="_blank" class="btn btn-primary" style="width:100%;">
             Empezar con Plan Pro
           </a>
         </div>
